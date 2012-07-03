@@ -28,7 +28,7 @@ class ProductTest < ActiveSupport::TestCase
       product.errors[:price].join('; ')  
 
     product.price = 1
-    assert product.valid?
+    assert product.invalid?
   end
   
   def new_product(image_url) 
@@ -53,7 +53,7 @@ class ProductTest < ActiveSupport::TestCase
     
   end
   
-  test 'product title must be unique i18n' do
+  test 'product title must be unique i18n ' do
     product = Product.new(title: products(:ruby).title,
       description: 'yyy',
       price: 1,

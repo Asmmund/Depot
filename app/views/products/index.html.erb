@@ -19,7 +19,7 @@
       <br />
       <%= link_to 'Edit',edit_product_path(product)  %>
       <br />      
-      <%= link_to 'Delete',product,confirm: 'Are you sure?',method: :delete  %>
+      <%= link_to 'Delete',product,:data => { :confirm => 'Are you sure?' } ,method: :delete  %>
     </td>
   </tr>
   <% end %>
