@@ -11,3 +11,11 @@ two:
   description: MyText
   image_url: MyString
   price: 9.99
+
+ruby:
+  title: Programming ruby 1.9
+  description: blah blah blah
+  image_url: image.jpg
+  price: 9.99
+  
+   
