@@ -1,3 +1,4 @@
+
 require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
@@ -52,7 +53,7 @@ class ProductTest < ActiveSupport::TestCase
     
   end
   
-  test 'product title must be unique' do
+  test 'product title must be unique i18n' do
     product = Product.new(title: products(:ruby).title,
       description: 'yyy',
       price: 1,
