@@ -1,4 +1,9 @@
 class Product < ActiveRecord::Base
+  has_many :line_items
+  before_destroy :ensure_not_reverenced_by_any_line_item
+  
+  
+  
   attr_accessible :description, :image_url, :price, :title
   validates :title, :description, :image_url, presence:true
   validates :price, numericality:{greater_than_or_equal_to: 0.01}
@@ -8,4 +13,16 @@ class Product < ActiveRecord::Base
     with: %r{\.(jpg|gif|png)$}i,
     message: 'must be in accepted image format'
   }
+  
+  private
+  # ensure that there are no line items for this cart
+  def ensure_not_reverenced_by_any_line_item
+    
+    if line_items.empty?
+      return true
+    else
+      errors.add(:base, 'Line item present')
+      return false
+    end
+  end
 end
