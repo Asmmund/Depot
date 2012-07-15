@@ -51,6 +51,7 @@ class LineItemsController < ApplicationController
           notice: 'Line item was successfully created.' }
         format.json { render json: @line_item, 
           status: :created, location: @line_item }
+        session[:counter]= nil
       else
         format.html { render action: "new" }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
