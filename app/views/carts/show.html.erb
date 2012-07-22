@@ -18,4 +18,4 @@
 </table>
 
 <%= button_to 'Empty_cart',@cart, method: :delete, 
-  confirm: 'Are you sure?' %>
+  :data => { :confirm => 'Are you sure?' } %>

@@ -10,6 +10,13 @@ class ProductsControllerTest < ActionController::TestCase
       price: 19.95
     }
   end
+  
+  test 'can\'t delete products in cart' do
+    assert_difference('Product.count', -1) do
+       delete :destroy, :id => products(:ruby).id
+     end
+     assert_redirected_to products_path
+  end
 
   test "should get index" do
     get :index
