@@ -79,11 +79,15 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1.json
   def destroy
     @line_item = LineItem.find(params[:id])
-    @line_item.destroy
+    if @line_item.quantity > 1
+      @line_item.update_attributes(:quantity => @line_item.quantity - 1)
+    else
+      @line_item.destroy
+    end
 
     respond_to do |format|
-      format.html { redirect_to line_items_url }
-      format.json { head :no_content }
+      format.html { redirect_to(cart_url(session[:cart_id])) }
+      format.xml  { head :ok }
     end
   end
 end
