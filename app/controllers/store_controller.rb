@@ -8,6 +8,7 @@ class StoreController < ApplicationController
     @count = session[:counter]
     @products = Product.order(:title)
     @shown_message = "You've been here #{@count} times" if session[:counter] >5
+    @cart = current_cart
     
   end
 end

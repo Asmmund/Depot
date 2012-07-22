@@ -14,6 +14,9 @@
 
   <div id="columns">
     <div id="side">
+      <div id="cart">
+        <%= render @cart %>
+      </div>
       <ul>
         <li><span class="time"><%= Time.now.strftime('%X') %></span></li>
         <%= link_to 'Home',:controller => :store, :action => :index  %>

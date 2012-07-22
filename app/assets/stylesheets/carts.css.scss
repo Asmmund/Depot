@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
- .carts {
+ .carts, #side #cart {
 
   .cart_title {
 
@@ -17,7 +17,12 @@
 
   }
 
-
+a.delete_line_item {
+color: white;
+}
+a.delete_line_item:hover {
+color: red;
+}
   .total_line .total_cell {
 
   font-weight: bold;
