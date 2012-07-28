@@ -7,7 +7,8 @@
 </tr>
 </table>
 
-<%= button_to 'Checkout',new_order_path, method: :get %>
-
-<%= button_to 'Empty_cart',cart, method: :delete, 
-   :data => { :confirm => 'Are you sure?' } %>
+<% unless current_page?(new_order_path) %>
+  <%= button_to 'Checkout',new_order_path, method: :get %>
+  <%= button_to 'Empty_cart',cart, method: :delete, 
+     :data => { :confirm => 'Are you sure?' } %>
+<% end %>

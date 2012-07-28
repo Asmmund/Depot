@@ -1,4 +1,6 @@
 Depot::Application.routes.draw do
+  resources :pay_types
+
 resources :line_items do
     #member do
     #  put 'decrement'
