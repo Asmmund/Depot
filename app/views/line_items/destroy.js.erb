@@ -1,2 +1,6 @@
-alert(<%=  params[:id] %>);
-$('#cart').find('.<%= params[:id]  %> ')
+var item = $('#cart').find('.<%= params[:id]  %> ').find('td:first');
+<% if @line_item.quantity >= 1 %>
+item.html('<%=  @line_item.quantity %> '+ '&times;');
+<% else %>
+item.parent().remove();
+<% end %>

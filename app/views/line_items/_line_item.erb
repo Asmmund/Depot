@@ -6,7 +6,7 @@
   <td><%= line_item.quantity %>&times;</td>
   <td><%= line_item.product.title %></td>
   <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
-  <td><%= link_to 'X', line_item, :method => :delete,
-    :class => 'delete_line_item',
+  <td><%= link_to 'X', decrement_line_item_path(line_item),method: :post,
+    :class => 'delete_line_item', remote: true,
     :data=>{:confirm=>'Are you sure?'} %></td>
 </tr>
