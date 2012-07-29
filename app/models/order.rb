@@ -5,6 +5,9 @@ class Order < ActiveRecord::Base
   PAYMENT_TYPES = ['Check', 'Credit card','Purchase order']
   validates :name, :address, :email,presence: true
   validates :pay_type_id, presence: true
+  validates :email,allow_blank: false,format: {
+    with: %r{^[A-Z0-9\._%\+\-]+\@[A-Z0-9\.-]+\.[A-Z]{2,4}$}i,
+    message: 'Email must be present and of acceptable format'}
   
   def add_line_items_from_cart(cart)
     cart.line_items.each do |item|
