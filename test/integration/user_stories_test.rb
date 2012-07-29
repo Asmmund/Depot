@@ -18,7 +18,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_template 'index'
     
     # add item to the cart
-    xml_http_request_ :post, '/line_items',product_id: ruby_book.id
+    xml_http_request :post, '/line_items',product_id: ruby_book.id
     assert_responce :success
     cart = Cart.find(session[:cart_id])
     assert_equal 1,cart.line_items.size
@@ -60,6 +60,17 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_equal "Confirmation email", mail.subject
     
   end
+  # check that email's sent on error in cart_controller
+  test 'Check email  send on error' do
+    get '/cart/erfowiefi';
+    assert_responce :redirect
+    assert_template '/'
+    mail = ActionMailer::Base.deliveries.last
+    assert_equal ["antony.ermolenko@gmail.com"], mail.to
+    assert_equal 'rails@application.report', mail[:from].value
+    assert_equal "Error in rails application", mail.subject
+  end
+  
   # test "the truth" do
   #   assert true
   # end

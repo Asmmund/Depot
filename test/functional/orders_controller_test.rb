@@ -6,7 +6,7 @@ class OrdersControllerTest < ActionController::TestCase
   end
   test 'require item in cart' do
     get :new
-    assert_redirect_to store_path
+    assert_redirected_to store_path
     assert_equal flash[:notice], 'Your cart is empty'
   end
   

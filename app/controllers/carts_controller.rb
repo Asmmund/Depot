@@ -16,8 +16,9 @@ class CartsController < ApplicationController
   def show
     begin
       @cart = Cart.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      logger.error "Attempt to access invalid cart #{params[:id]}" 
+    rescue ActiveRecord::RecordNotFound => e
+      logger.error "Attempt to access invalid cart #{params[:id]}"
+      ErrorNotifier.report_error(e).deliver
       redirect_to store_url, :notice => 'Invalid cart'
     else
       if @cart.line_items.count.zero?
@@ -86,6 +87,7 @@ class CartsController < ApplicationController
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy
+    Cart.destroy_all
     @cart =current_cart
     @cart.destroy
     session[:cart_id] = nil
