@@ -1,4 +1,12 @@
 Depot::Application.routes.draw do
+  get "admin/index"
+
+  get "sessions/create"
+
+  get "sessions/destroy"
+
+  resources :users
+
   resources :pay_types
 
 resources :line_items do
