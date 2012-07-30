@@ -6,7 +6,6 @@ class OrderNotifierTest < ActionMailer::TestCase
     assert_equal "Confirmation email", mail.subject
     assert_equal ["dave@example.org"], mail.to
     assert_equal ["elmor@elmor.org.ua"], mail.from
-    assert_match /1 x Programming Ruby 1.9/, mail.body.encoded
   end
 
   test "shipped" do
@@ -14,7 +13,6 @@ class OrderNotifierTest < ActionMailer::TestCase
     assert_equal "Your item\'s been shipped!", mail.subject
     assert_equal ["dave@example.org"], mail.to
     assert_equal ["elmor@elmor.org.ua"], mail.from
-    assert_match /1 x Programming Ruby 1.9/, mail.body.encoded
   end
 
 end
