@@ -1,10 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  product_id: 1
+  product: :ruby
   cart_id: 1
   order: one
 
 two:
-  product_id: 1
-  cart_id: 1
+  product: :ruby
+  cart_id: 2
+  order: two

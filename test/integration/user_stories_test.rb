@@ -13,20 +13,21 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     Order.delete_all
     ruby_book = products(:ruby)
     # go to store index page
-    get '/'
+    get "/"
     assert_response :success
-    assert_template 'index'
+    assert_template "index"
     
     # add item to the cart
-    xml_http_request :post, '/line_items',product_id: ruby_book.id
-    assert_responce :success
+    xml_http_request :post, '/line_items', product_id: ruby_book.id
+    assert_response :success
+    
     cart = Cart.find(session[:cart_id])
     assert_equal 1,cart.line_items.size
     assert_equal ruby_book,cart.line_items[0].product
     
     # check out
     get '/orders/new'
-    assert_responce :success
+    assert_response :success
     assert_template 'new'
     
     #fill the form & get redirected to the index page
@@ -35,21 +36,23 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
         name: "Dave Thomas",
         address: "123 The Street",
         email: "dave@example.com",
-        pay_type: "Check"}
-    assert_responce :success
+        pay_type_id: 1
+        }
+    assert_response :success
     assert_template 'index'
     cart = Cart.find(session[:cart_id])
     assert_equal 0, cart.line_items.size
     
     # check data in the database
-    orders = Orders.all
+    orders = Order.all
     assert_equal 1, orders.size
     order = orders[0]
     assert_equal "dave@example.com",order.email
     assert_equal "Dave Thomas",order.name
     assert_equal "123 The Street",order.address
-    assert_equal "Check",order.pay_type
+    assert_equal 1,order.pay_type_id
     assert_equal 1,order.line_items.size
+    
     line_item = order.line_items[0]
     assert_equal ruby_book, line_item.product
     
@@ -62,8 +65,8 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
   end
   # check that email's sent on error in cart_controller
   test 'Check email  send on error' do
-    get '/cart/erfowiefi';
-    assert_responce :redirect
+    get '/carts/erfowiefi';
+    assert_response :redirect
     assert_template '/'
     mail = ActionMailer::Base.deliveries.last
     assert_equal ["antony.ermolenko@gmail.com"], mail.to
