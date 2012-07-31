@@ -9,7 +9,7 @@ class OrdersControllerTest < ActionController::TestCase
     assert_redirected_to store_path
     assert_equal flash[:notice], 'Your cart is empty'
   end
-  
+  #TODO resolve this issue
 #  test "should get index" do
 #    get :index
 #    assert_response :success

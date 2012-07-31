@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ErrorNotifierTest <  ActionMailer::TestCase
-   
+#TODO solve this errors!   
 #  test "report_error" do
 #    
 #    mail = ErrorNotifier.report_error(error_notifier(:one))

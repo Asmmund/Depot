@@ -12,13 +12,23 @@
       </ul>
     </div>
   <% end %>
-  
-  <fieldset>
+
+  <fieldse class="fieldset">
     <legend>Enter User details</legend>
-  <div >
-    <%= f.label :name %>:
-    <%= f.text_field :name, size: 40 %>
-  </div>
+    
+
+
+
+   <div >
+      <%= f.label :name %>:
+      <%= f.text_field :name, size: 40 %>
+   </div>
+    <% if params[:action] != 'new' %>
+      <div>  
+        <%= f.label :current_password %>
+        <%= f.password_field :current_password, size: 40 %>
+      </div> 
+    <% end %>
   <div >
     <%= f.label :password, 'Password' %>
     <%= f.password_field :password,size: 40  %>
