@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class CartsControllerTest < ActionController::TestCase
-  setup do
+setup do
     @cart = carts(:one)
   end
 
