@@ -1,7 +1,15 @@
 class SessionsController < ApplicationController
   skip_before_filter :authorize
   def create
-    user = User.find_by_name(params[:name])
+    
+    if User.count == 0
+      user = User.new(name: params[:name],
+                      password_digest: BCrypt::Password.create(params[:password]))
+
+      user.save
+    else
+      user = User.find_by_name(params[:name])
+    end
     if user and user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to admin_url

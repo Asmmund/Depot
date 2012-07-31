@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
-  attr_accessible :name,:password,:password_confirmation
+  attr_accessible :name,:password,:password_confirmation,:password_digest
   has_secure_password
   after_destroy :ensure_an_admin_remains
   
