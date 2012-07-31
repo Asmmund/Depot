@@ -14,5 +14,6 @@ class OrderNotifierTest < ActionMailer::TestCase
     assert_equal ["dave@example.org"], mail.to
     assert_equal ["elmor@elmor.org.ua"], mail.from
   end
+  
 
 end

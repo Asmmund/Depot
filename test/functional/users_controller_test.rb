@@ -8,6 +8,7 @@ class UsersControllerTest < ActionController::TestCase
       password_confirmation: 'password'
     }
     @user = users(:one)
+    
   end
 
   test "should get index" do
