@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_filter :set_i18n_locale_from_params
   before_filter :authorize
   protect_from_forgery
   
@@ -25,5 +26,20 @@ class ApplicationController < ActionController::Base
 #       username == 'admin' && md5_of_password == '5ebe2294ecd0e0f08eab7690d2a6ee69'
 #      end
 #    end
+  end
+  def set_i18n_locale_from_params
+    if params[:locale]
+      if I18n.available_locales.include? (params[:locale].to_sym)
+        I18n.locale = params[:locale]
+      else
+        flash.now[:notice] = 
+          "#{params[:locale]} translation not available"
+        logger.error flash[:notice]
+      end
+    end
+  end
+  
+  def default_url_options
+    { locale: I18n.locale }
   end
 end

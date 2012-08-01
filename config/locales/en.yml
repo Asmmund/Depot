@@ -1,5 +1,42 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  
+  layouts: 
+    application:
+      title: 'Depot'
+      home: 'Home'
+      questions:  'Questions'
+      news: 'News'
+      contact: 'Contact'
+      
+  store:
+    index:
+      title_html: 'Store'
+      add_html: 'Add to cart'
+      
+  carts:
+    cart:
+      title: 'Cart'
+      total: 'Total'
+      checkout: 'Checkout'
+      empty_cart: 'Empty'
+      
+  number:
+    currency:
+      format:
+        units: '$'
+        precision: 2
+        separator: '.'
+        delimiter: ','
+        format: "%u%n"
+        
+  orders:
+    new:
+      legend: 'Please enter details of your order'
+    form:
+      name: 'Name'
+      address: 'Address'
+      pay_type: 'Pay Type'
+      pay_prompt_html: 'Select Payment Type'
+      place_order:  'Place Order'
+      
+    thanks: 'Order was successfully created.'  

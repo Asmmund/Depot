@@ -1,5 +1,5 @@
 class LineItemsController < ApplicationController
- skip_before_filter :authorize, only: :create
+ skip_before_filter :authorize, only: [:create,:destroy, :decrement]
   # GET /line_items
   # GET /line_items.json
   def index
@@ -83,10 +83,8 @@ class LineItemsController < ApplicationController
   def decrement
     @cart = current_cart
 
-    # 1st way: decrement through method in @cart
     @line_item = @cart.decrement_line_item_quantity(params[:id]) # passing in line_item.id
 
-    # 2nd way: decrement through method in @line_item
     #@line_item = @cart.line_items.find_by_id(params[:id])
     #@line_item = @line_item.decrement_quantity(@line_item.id)
 

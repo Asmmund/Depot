@@ -1,0 +1,52 @@
+ru:
+  
+  layouts: 
+    application:
+      title: 'Хранилище'
+      home: 'Главная'
+      questions:  'Вопросы'
+      news: 'Новости'
+      contact: 'Контакты'
+  store:
+    index:
+      title_html: 'Магазин'
+      add_html: 'Добавить в корзину'      
+      
+  carts:
+    cart:
+      title: 'Корзина'
+      total: 'Всего'
+      checkout: 'Оформить'
+      empty_cart: 'Очистить'      
+      
+  number:
+    currency:
+      format:
+        units: '$'
+        precision: 2
+        separator: '.'
+        delimiter: ','
+        format: "%u%n"
+        
+  orders:
+    new:
+      legend: 'Пожалуйста, оформите заказ'
+    form:
+      name: 'Имя'
+      address: 'Адресс'
+      pay_type: 'Вид оплаты'
+      pay_prompt_html: 'выбирети вид оплаты'
+      place_order:  'Сделать заказ'        
+      
+  activerecord:
+    errors:
+      messages:
+        inclusion: 'Нет в списке'
+        blank: 'должно быть заполненно'
+  errors:
+    template:
+      body: 'ошибка!'
+      header:
+        one: "1 ошибка встречена в модели %{model}"
+        other: "%{count} встречено в модели %{model}"
+  thanks: 'Заказ был успешно создан .'  
