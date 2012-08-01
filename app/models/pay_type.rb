@@ -1,5 +1,6 @@
 class PayType < ActiveRecord::Base
-  attr_accessible :name,:pay_type
+validates :name, presence:true
+attr_accessible :name,:pay_type
   has_many :order
 
   def self.names

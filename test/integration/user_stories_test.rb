@@ -63,6 +63,19 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_equal "Confirmation email", mail[:subject].value
     
   end
+  
+  test 'checking logout' do
+      delete logout_url
+      assert_response :redirect
+      get "/users" 
+      assert_redirected_to login_url
+#    
+    
+  end
+  
+  
+  
+  
   # check that email's sent on error in cart_controller
   test 'check email  send on error' do
 #    get '/carts/erfowiefi';
