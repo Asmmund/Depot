@@ -5,8 +5,7 @@ class StoreController < ApplicationController
       redirect_to store_path(locale: params[:set_locale])
     else
       @count = session[:counter]
-      @products = Product.order(:title)
-      @shown_message = "You've been here #{@count} times" if session[:counter] >5
+      @products = Product.order(:title).find(:all,:conditions =>{:locale=>I18n.locale})
       @cart = current_cart
     end
     if session[:counter].nil?
