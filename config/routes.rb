@@ -10,6 +10,8 @@ Depot::Application.routes.draw do
   scope '(:locale)' do
     resources :users
     resources :orders
+    resources :pay_types
+    resources :order_notifier
     resources :line_items do
         post 'decrement', on: :member
     end    

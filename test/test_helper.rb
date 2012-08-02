@@ -20,6 +20,7 @@ class ActiveSupport::TestCase
   
   def setup
     login_as :one if defined? session
+    
   end
   
 end

@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.paginate page: params[:page], order: 'created_at desc',
       per_page:10
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @orders }
@@ -32,6 +31,7 @@ class OrdersController < ApplicationController
       return
       
     end
+    @pay_type_select = PayType.find(:all,:conditions =>{:locale=>I18n.locale})
     @order = Order.new
 
     respond_to do |format|
